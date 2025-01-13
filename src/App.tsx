@@ -1,10 +1,10 @@
 import './App.css'
-import SubBytes from './components/SubBytes';
+import ShiftRows from './components/ShiftRows/ShiftRows';
 
 function App() {
     return (
         <>
-            <SubBytes/>
+            <ShiftRows/>
         </>
     )
 }
