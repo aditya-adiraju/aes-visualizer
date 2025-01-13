@@ -1,5 +1,3 @@
-import React from "react";
-
 type Pair<T> = [T, T];
 interface SboxProps {
   matrix: number[][];

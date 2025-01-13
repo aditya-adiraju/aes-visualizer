@@ -1,7 +1,7 @@
-import React from 'react';
 import { useState } from 'react';
 import SBox from './Sbox'
 import StateMatrix from '../common/StateMatrix'
+import StepHeading from '../common/StepHeading';
 
 const splitByte = (x: number): [number, number] => [(x >> 4) % 16,  x % 16];
 
@@ -36,6 +36,8 @@ export default function SubBytes() {
 
   const [highlightPair, setHighlightPair] = useState<[number, number]>([0, 0]) ;
   return (
+    <>
+      <StepHeading title='Sub Bytes'/>
       <div className='grid grid-cols-3 items-center justify-items-center'>
         <div className=''>
           <StateMatrix heading="Input State" state={inState} highlight={highlightPair} setHighlight={setHighlightPair}/>
@@ -47,6 +49,7 @@ export default function SubBytes() {
           <StateMatrix heading="Output State" state={subBytesMatrix(inState, sBox)} highlight={highlightPair} setHighlight={setHighlightPair}/>
         </div>
       </div>
+    </>
   )
 }
 
