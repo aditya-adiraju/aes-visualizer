@@ -1,6 +1,7 @@
+import React from 'react';
 import { useState } from 'react';
 import SBox from './Sbox'
-import StateMatrix from './common/StateMatrix'
+import StateMatrix from '../common/StateMatrix'
 
 const splitByte = (x: number): [number, number] => [(x >> 4) % 16,  x % 16];
 
