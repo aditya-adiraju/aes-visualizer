@@ -3,19 +3,18 @@ import StateMatrix from "../common/StateMatrix";
 import { useState, useRef } from "react";
 import StepHeading from "../common/StepHeading";
 
-export default function ShiftRows() {
-  const [stateMatrix, setStateMatrix] = useState<number[][]>([
-    [1, 2, 3, 4],
-    [5, 6, 7, 8],
-    [9, 10, 11, 12],
-    [13, 14, 15, 16],
-  ]);
+interface ShiftRowsProps {
+  inState: number[][]
+}
+
+export default function ShiftRows({ inState }: ShiftRowsProps) {
+  const [stateMatrix, setStateMatrix] = useState<number[][]>(inState);
   const [shiftingRowIndex, setShiftingRowIndex] = useState<[number, number]>([
     -1, -1,
   ]);
   const inputState = useRef(stateMatrix);
   return (
-    <>
+    <div>
       <StepHeading title="Shift Rows" />
       <StateMatrix
         state={stateMatrix}
@@ -29,6 +28,6 @@ export default function ShiftRows() {
         inputStateRef={inputState}
         setShiftingRow={setShiftingRowIndex}
       />
-    </>
+    </div>
   );
 }

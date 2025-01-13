@@ -39,7 +39,7 @@ export default function StateMatrix({
   shiftingRowPair = [-1, -1],
 }: StateMatrixProps) {
   return (
-    <div className="text-center">
+    <div className="text-center justify-items-center">
       <h2 className="font-bold text-2xl p-2"> {heading} </h2>
       <table className="border-separate border-spacing-1">
         <tbody>

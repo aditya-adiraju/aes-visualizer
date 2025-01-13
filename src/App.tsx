@@ -1,11 +1,11 @@
 import { MathJaxContext } from 'better-react-mathjax';
 import './App.css'
-import MixColumns from './components/MixColumns/MixColumns';
+import Page from './components/Page';
 
 function App() {
     return (
         <MathJaxContext>
-            <MixColumns/>
+            <Page />
         </MathJaxContext>
     )
 }
