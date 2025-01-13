@@ -1,12 +1,12 @@
 import './App.css'
-import StateArray from './components/StateArray'
+import SubBytes from './components/SubBytes';
 
 function App() {
-  return (
-    <>
-      <StateArray matrix={[[1, 2, 3], [4, 5, 6], [7, 8, 9]]}/>
-    </>
-  )
+    return (
+        <>
+            <SubBytes/>
+        </>
+    )
 }
 
 export default App
