@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import SBox from './Sbox'
-import StateMatrix from './StateMatrix'
+import StateMatrix from './common/StateMatrix'
 
 const splitByte = (x: number): [number, number] => [(x >> 4) % 16,  x % 16];
 
@@ -39,7 +39,7 @@ export default function SubBytes() {
         <div className=''>
           <StateMatrix heading="Input State" state={inState} highlight={highlightPair} setHighlight={setHighlightPair}/>
         </div>
-        <div className='min-w-0 max-w-full translate-x-[-2%]'>
+        <div className='min-w-0 max-w-full translate-x-[-4%]'>
           <SBox matrix={sBox} highlight={splitByte(inState[highlightPair[0]][highlightPair[1]])} />
         </div>
         <div className=''>
