@@ -1,3 +1,4 @@
+import XorRoundKey from "./XorRoundKey/XoRoundKey";
 
 export const splitByte = (x: number): [number, number] => [(x >> 4) % 16,  x % 16];
 
@@ -52,4 +53,9 @@ export function mixColumnOperation(
       GFMatrixMul(fixedMatrix, getColumn(inputState, i))
     )
   );
+}
+
+
+export function xorKey(state: number[][], roundKey: number[][]) {
+  return state.map((row, i) => row.map((_, j) => state[i][j] ^ roundKey[i][j]));
 }

@@ -1,12 +1,16 @@
-import { shiftRows, subBytesMatrix } from "./lib";
+import { mixColumnOperation, shiftRows, subBytesMatrix } from "./lib";
 import MixColumns from "./MixColumns/MixColumns";
 import ShiftRows from "./ShiftRows/ShiftRows";
 import SubBytes from "./SubBytes/SubBytes";
+import XorRoundKey from "./XorRoundKey/XoRoundKey";
 
 const inState: number[][] = Array.from({ length: 4 }, () =>
   Array.from({ length: 4 }, () => Math.floor(Math.random() * 1024) & 0xff)
 );
 
+const roundKey : number[][] = Array.from({ length: 4 }, () =>
+  Array.from({ length: 4 }, () => Math.floor(Math.random() * 1024) & 0xff)
+);
 
 const fixedMatrix: number[][] = [
   [0x2, 0x3, 0x1, 0x1],
@@ -39,6 +43,7 @@ export default function Page() {
       <SubBytes inState={inState} sbox={sbox} />
       <ShiftRows inState={subBytesMatrix(inState, sbox)} />
       <MixColumns inState={shiftRows(subBytesMatrix(inState, sbox))} fixedMatrix={fixedMatrix}/>
+      <XorRoundKey inState={mixColumnOperation(shiftRows(subBytesMatrix(inState, sbox)), fixedMatrix)} roundKey={roundKey} />
     </>
   );
 }
