@@ -12,6 +12,7 @@ interface StateMatrixProps {
     | ((_: [number, number]) => void);
 
   shiftingRowPair?: Pair<number>;
+  isKey?: boolean;
 }
 
 function getTranslateX(pivot: number, index: number, size: number): string {
@@ -37,6 +38,7 @@ export default function StateMatrix({
   highlight = [-1, -1],
   setHighlight = (_) => {},
   shiftingRowPair = [-1, -1],
+  isKey = false,
 }: StateMatrixProps) {
   return (
     <div className="text-center justify-items-center">
@@ -48,15 +50,26 @@ export default function StateMatrix({
               {row.map((val, j) => (
                 <td
                   className={
-                    "relative w-10 h-10 text-xl font-bold " + (shiftingRowPair[0] == i ? "shifting-left " : "") +
+                    "relative w-10 h-10 text-xl font-bold " +
+                    (shiftingRowPair[0] == i ? "shifting-left " : "") +
                     (highlight[0] === i && highlight[1] === j
-                      ? " bg-purple-600 "
-                      : " bg-blue-600 ")
+                      ? isKey
+                      ? " bg-violet-600 "
+                        : " bg-purple-600"
+                      : isKey
+                        ? " bg-red-600 "
+                      : " bg-blue-600")
                   }
                   //{"--translate": (shiftingRowPair[0] === i ? getTranslateX(shiftingRowPair[1], j, row.length) : "0px")
                   style={
                     shiftingRowPair[0] === i
-                      ? ({ "--transform": getTranslateX(shiftingRowPair[1], j, row.length) } as React.CSSProperties)
+                      ? ({
+                          "--transform": getTranslateX(
+                            shiftingRowPair[1],
+                            j,
+                            row.length
+                          ),
+                        } as React.CSSProperties)
                       : ({} as React.CSSProperties)
                   }
                   onMouseOver={() => setHighlight([i, j])}
