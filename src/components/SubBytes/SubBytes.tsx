@@ -14,7 +14,7 @@ export default function SubBytes({ inState, sbox }: SubBytesProps) {
   return (
     <>
       <StepHeading title="Sub Bytes" />
-      <div className="grid grid-cols-3 items-center justify-items-center">
+      <div className="flex items-center justify-items-center gap-10">
         <div className="">
           <StateMatrix
             heading="Input State"
@@ -23,7 +23,7 @@ export default function SubBytes({ inState, sbox }: SubBytesProps) {
             setHighlight={setHighlightPair}
           />
         </div>
-        <div className="min-w-0 max-w-full translate-x-[-4%]">
+        <div className="min-w-0 max-w-full">
           <SBox
             matrix={sbox}
             highlight={splitByte(inState[highlightPair[0]][highlightPair[1]])}

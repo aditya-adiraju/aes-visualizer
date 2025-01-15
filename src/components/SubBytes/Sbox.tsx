@@ -7,7 +7,7 @@ interface SboxProps {
 export default function SBox ({ matrix, highlight = [-1, -1]}: SboxProps) {
   return (
     <div className="text-center">
-      <h2 className="font-bold text-4xl p-2 translate-x-[5%]">S-Box</h2>
+      <h2 className="font-bold text-4xl p-2">S-Box</h2>
     <table className="border-separate">
       {matrix.map((row, i) => (
         <tr key={i}> {row.map((val, j) => (
