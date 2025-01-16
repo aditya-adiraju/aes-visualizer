@@ -50,7 +50,7 @@ export default function StateMatrix({
               {row.map((val, j) => (
                 <td
                   className={
-                    "relative w-10 h-10 text-xl font-bold " +
+                    "relative w-10 h-10 text-xl font-bold hover:scale-125 " +
                     (shiftingRowPair[0] == i ? "shifting-left " : "") +
                     (highlight[0] === i && highlight[1] === j
                       ? isKey

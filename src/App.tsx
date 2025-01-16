@@ -9,15 +9,10 @@ function App() {
     <MathJaxContext>
       <FlowChart>
         <StartEndShape title="START" display="" />
-        <br />
         <ProcessShape title="SubBytes()" display="SubBytes"/>
-        <br/>
         <ProcessShape title="ShiftRows()" display="ShiftRows"/>
-        <br/>
         <ProcessShape title="MixColumns()" display="MixColumns"/>
-        <br/>
         <ProcessShape title="XorRoundKey()" display="XorRoundKey"/>
-        <br/>
         <StartEndShape title="END" display="NextRound" />
       </FlowChart>
     </MathJaxContext>
