@@ -1,0 +1,7 @@
+.rotate-arrow {
+    transform: rotate(var(--angle));
+    transform-origin: 50% 100%
+}
+.div:hover{
+    transform: rotate(var(--angle));
+}

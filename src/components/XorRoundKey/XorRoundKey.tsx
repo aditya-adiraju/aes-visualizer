@@ -22,7 +22,7 @@ export default function XorRoundKey({ inState, roundKey }: XorRoundKeyProps) {
         heading="Input State"
       />
 
-      <div className="scale-[400%]">
+      <div className="scale-[400%] p-8">
         <MathJax>{"\\(\\oplus\\)"}</MathJax>
       </div>
 
@@ -33,7 +33,7 @@ export default function XorRoundKey({ inState, roundKey }: XorRoundKeyProps) {
         setHighlight={setHighlightPair}
         heading="Round Key"
       />
-      <div className="scale-[400%]">
+      <div className="scale-[400%] p-8">
        =
       </div>
       <StateMatrix
