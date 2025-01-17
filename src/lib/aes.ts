@@ -52,3 +52,38 @@ export function stateToBytes(state: number[][]): number[] {
 
   return bytes;
 }
+
+// The irreducible polynomial m(x) \in GF(2^8) [similar to prime numbers over integers]
+// m(x) = x^8 + x^4 + x^3 + x + 1
+const m_x = 0x011b;
+/**
+ *
+ * @param  f_x
+ * @returns the result of (x) times f_x in  GF(2^8)<x>
+ */
+function xtime(f_x: number) {
+  assert.ok(f_x >= 0 && f_x <= 255, "x must be between 0 and 255.");
+  const result = (f_x << 1) & 0xff;
+  return result > 255 ? result ^ 0x1b : result;
+}
+
+/**
+ * 
+ * @param a 
+ * @param b 
+ * @returns a*b in GF(2^8). a, b are interpreted as bytes.
+ */
+export function GFMul(a: number, b: number): number {
+  a = a & 0xff;
+  b = b & 0xff;
+  const xtimesTable = [a];
+  for (let i = 1; i < 8; i++) xtimesTable.push(xtime(xtimesTable[i - 1]));
+
+  xtimesTable.reverse();
+
+  const b_bitstring = b.toString(2).padStart(8, "0");
+  let result = 0;
+  for (let i = 0; i < 8; i++)
+    result = b_bitstring[i] === "1" ? result ^ xtimesTable[i] : result;
+  return result & 0xff;
+}
